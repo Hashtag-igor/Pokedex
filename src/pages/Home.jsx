@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 
 import Navbar from "../components/Navbar/Navbar"
 import PokemonCard from "../components/PokemonCard/PokemonCard"
+import Loading from "../components/Loading/Loading"
 
 import { Container } from "@mui/system"
 import { Grid } from "@mui/material"
@@ -42,9 +43,9 @@ export default function Home(){
         <Navbar pokemonFilter={pokemonFilter} />
             <Container maxWidth="false">                                              {/*Container = component pré pronto do material ui */}
                 <Grid container spacing={3}>
-                    {pokemons.length === 0 ? (<p style={{margin: "20px auto", fontWeight: "500", letterSpacing: "2px"}}>Loading...</p>) : (pokemons.map((pokemon, key) => 
-                        <Grid item xs={2} key={key}>                                  {/*Grid = component pré pronto do material ui */}
-                            <PokemonCard name={pokemon.data.name} image={pokemon.data.sprites.front_default} types="" />      {/*Passando props para o PokemonCard*/}
+                    {pokemons.length === 0 ? <Loading /> : (pokemons.map((pokemon, key) => 
+                        <Grid item xs={12} sm={6} md={4} lg={2.4} key={key}>                                  {/*Grid = component pré pronto do material ui */} {/*xs = extremamente pequeno | sm = pequeno | md = medio | lg = largo || São usados para tamanhos de responsividade da tela */}
+                            <PokemonCard name={pokemon.data.name} image={pokemon.data.sprites.front_default} types={pokemon.data.types} />      {/*Passando props para o PokemonCard*/}
                         </Grid>
                     ))}
                 </Grid>
