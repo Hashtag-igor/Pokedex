@@ -7,6 +7,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 
+import { Link } from "react-router-dom"
+
 export default function PokemonCard({name, image, types}) {
     
   function typeHandler(){
@@ -19,18 +21,20 @@ export default function PokemonCard({name, image, types}) {
   }
 
   return (
-    <Card sx={{ maxWidth: 345 }} >
-      <CardMedia component="img" height="200" image={image} title="pokémon"/>
-      <CardContent >
-        <Box display="flex" alignItems="center" justifyContent="space-between">
-          <Typography gutterBottom variant="h5" component="div">
-            {name}
-          </Typography>
-          <Typography gutterBottom variant="caption" component="div">
-            {typeHandler()}   
-          </Typography>
-        </Box>
-      </CardContent>
-    </Card>
+    <Link to="/teste" style={{textDecoration: "none"}}>
+      <Card sx={{ maxWidth: 345 }}>
+        <CardMedia component="img" height="200" image={image} title="pokémon"/>
+        <CardContent >
+          <Box display="flex" alignItems="center" justifyContent="space-between">
+            <Typography gutterBottom variant="h5" component="div">
+              {name}
+            </Typography>
+            <Typography gutterBottom variant="caption" component="div">
+              {typeHandler()}   
+            </Typography>
+          </Box>
+        </CardContent>
+      </Card>
+    </Link>
   );
 }
