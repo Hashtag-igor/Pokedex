@@ -7,8 +7,6 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 
-import { Link } from "react-router-dom"
-
 export default function PokemonCard({name, image, types}) {
     
   function typeHandler(){
@@ -21,7 +19,6 @@ export default function PokemonCard({name, image, types}) {
   }
 
   return (
-    <Link to="/teste" style={{textDecoration: "none"}}>
       <Card sx={{ maxWidth: 345 }}>
         <CardMedia component="img" height="200" image={image} title="pokémon"/>
         <CardContent >
@@ -35,6 +32,5 @@ export default function PokemonCard({name, image, types}) {
           </Box>
         </CardContent>
       </Card>
-    </Link>
   );
 }
