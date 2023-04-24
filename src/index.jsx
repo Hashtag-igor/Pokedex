@@ -1,31 +1,43 @@
-import React from 'react';
+//react
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import './global.css';
 
+// //components
 import App from './App';
-import Home from './pages/Home';
-import ErrorPage from "./pages/ErrorPage"
+// import Home from './pages/Home';
+// import ErrorPage from "./pages/ErrorPage";
+// import Profile from "./pages/Profile";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// //rrd
+// import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "/home",
-        element: <Home />
-      }
-    ]
-  },
-])
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <App />,
+//     errorElement: <ErrorPage />,
+//     children: [
+//       {
+//         path: "/",
+//         element: <Home setPokemonData={setPokemonData}/>,
+//       },
+//       {
+//         path: "/profile",
+//         element: <Profile pokemonData={pokemonData}/>
+//       }
+
+//     ]
+//   },
+// ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <App/>
   </React.StrictMode>
 );
+
+
 

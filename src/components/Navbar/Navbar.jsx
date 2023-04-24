@@ -1,12 +1,12 @@
 import * as React from 'react';
+
+import {useNavigate} from "react-router-dom"
+
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-//import IconButton from '@mui/material/IconButton';
-//import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-//import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 
 const Search = styled('div')(({ theme }) => ({
@@ -51,23 +51,24 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-function ReloadPage(){
-  window.location.reload()
-}
 
-export default function NavBar({pokemonFilter}) {
+export default function NavBar({pokemonFilter, hideSearch}) {
+  const navigate = useNavigate();
+
   return (
     <Box sx={{ flexGrow: 1, margin: "100px 0px"}}>
       <AppBar position="fixed" sx={{backgroundColor: "black"}}>
         <Toolbar>
           <Box display="flex" justifyContent="space-between" width="100%">
-            <Box component="img" onClick={ReloadPage} src="/assets/pokemon-logo.png" height="3em" style={{cursor: "pointer"}}/>
-            <Search sx={{width: "60%"}} onChange={(e) => pokemonFilter(e.target.value)}>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} sx={{margin: "5px 0px 0px 0px"}} />
-            </Search>
+            <Box component="img" onClick={() => navigate("/")} src="/assets/pokemon-logo.png" height="3em" sx={{cursor: "pointer"}}/>
+            {!hideSearch && (
+              <Search sx={{width: "60%"}} onChange={(e) => pokemonFilter(e.target.value)}>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} sx={{margin: "5px 0px 0px 0px"}} />
+              </Search>
+            )}
           </Box>
         </Toolbar>
       </AppBar>
