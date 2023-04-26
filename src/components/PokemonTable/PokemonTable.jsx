@@ -13,13 +13,13 @@ export default function PokemonTable({pokemonData}) {
     const {weight, height, types} = pokemonData;
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer sx={{height: "fit-content", borderRadius: "10px"}} elevation={3} component={Paper}>
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>Height</TableCell>
-            <TableCell>Weight</TableCell>
-            <TableCell>Type</TableCell>
+            <TableCell><strong>Height</strong></TableCell>
+            <TableCell><strong>Weight</strong></TableCell>
+            <TableCell><strong>Type</strong></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

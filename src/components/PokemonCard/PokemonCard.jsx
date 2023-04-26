@@ -11,7 +11,7 @@ import {typeHandler} from "../../utils"
 export default function PokemonCard({name, image, types}) {
 
   return (
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ maxWidth: 345, cursor: "pointer" }}>
         <CardMedia component="img" height="200" image={image} title="pokémon"/>
         <CardContent >
           <Box display="flex" alignItems="center" justifyContent="space-between">
