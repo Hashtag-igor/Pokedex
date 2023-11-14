@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {useNavigate} from "react-router-dom"
+import {useNavigate, useLocation} from "react-router-dom"
 
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
@@ -54,13 +54,28 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function NavBar({pokemonFilter, hideSearch}) {
   const navigate = useNavigate();
+  const location = useLocation()
+
+  const handleLogoClick = () => {
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (location.pathname === '/profile') {
+      const isAtTop = window.scrollY === 0;
+
+      if (isAtTop) {
+        navigate('/');
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <Box sx={{ flexGrow: 1, margin: "100px 0px"}}>
       <AppBar position="fixed" sx={{backgroundColor: "black"}}>
         <Toolbar>
           <Box display="flex" justifyContent="space-between" width="100%">
-            <Box component="img" onClick={() => navigate("/")} src="/assets/pokemon-logo.png" height="3em" sx={{cursor: "pointer"}}/>
+            <Box component="img" onClick={handleLogoClick} src="/assets/pokemon-logo.png" height="3em" sx={{cursor: "pointer"}}/>
             {!hideSearch && (
               <Search sx={{width: "60%"}} onChange={(e) => pokemonFilter(e.target.value)}>
                 <SearchIconWrapper>
